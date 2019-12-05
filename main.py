@@ -1,4 +1,4 @@
-# Num é pegadinha naum garai kkjk
+# Eh pegadinha garai kkkj
 def entrada_do_usuario():      # Esta função representa a entrada do usuário.
 	return [0, 0]
 
