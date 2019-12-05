@@ -43,6 +43,12 @@ def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do
 
 	return posicao	
 
+def mostrar_gui(tabuleiro):
+	print(' ' + ' | '.join(tabuleiro[0:3]))
+	print('+'.join(['---', '---', '---']))
+	print(' ' + ' | '.join(tabuleiro[3:6]))
+	print('+'.join(['---', '---', '---']))
+	print(' ' + ' | '.join(tabuleiro[6:9]))
 
 def checar_se_ganhou():        # Esta função analisa a condição de vitória do jogo atual.
 	return True
@@ -53,3 +59,4 @@ while fim_de_jogo != True:
 	jogada = entrada_do_usuario()
 	fazer_jogada(jogada, tabuleiro)
 	fim_de_jogo = checar_se_ganhou()
+	mostrar_gui(tabuleiro)
