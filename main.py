@@ -1,9 +1,11 @@
 tabuleiro = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
-def entrada_do_usuario():
+#sei laaaaaaaaaaaaaaaaaa
+# Eh pegadinha garai kkkj
+def entrada_do_usuario():      # Esta função representa a entrada do usuário.
 	return [0, 0]
 
-def fazer_jogada(posicao, tabuleiro):
+def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do usuário.
 	
 	if posicao == [0,0]:
 		posicao = 0
@@ -25,14 +27,15 @@ def fazer_jogada(posicao, tabuleiro):
 		posicao = 8
 	tabuleiro[posicao] = "X"
 
-	return posicao
+	return posicao	
 
-def checar_se_ganhou():
+
+def checar_se_ganhou():        # Esta função analisa a condição de vitória do jogo atual.
 	return True
 
-
+# Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
 fim_de_jogo = False
 while fim_de_jogo != True:
 	jogada = entrada_do_usuario()
-	fazer_jogada(posicao, tabuleiro)
+	fazer_jogada(jogada, tabuleiro)
 	fim_de_jogo = checar_se_ganhou()
