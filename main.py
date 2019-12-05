@@ -1,4 +1,4 @@
-#sei la
+#sei laaaa
 def entrada_do_usuario():
 	return [0, 0]
 
