@@ -5,7 +5,7 @@ tabuleiro = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
 
 def coordenada_esta_no_limite(c, texto):
 	while (c < 0) or (c > 2):
-		c = int(input('Digite o valor da '+ str(texto) ': ' ))
+		c = int(input('Digite o valor da '+ str(texto) + ': ' ))
 	return c
 
 def entrada_do_usuario():      # Esta função representa a entrada do usuário.
