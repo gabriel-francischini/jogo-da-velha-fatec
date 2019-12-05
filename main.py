@@ -1,7 +1,18 @@
-#sei laaaaaaaaaaaaaaaaaa
-# Eh pegadinha garai kkkj
+def coordenada_esta_no_limite(c, texto):
+	while (c < 0) or (c > 2):
+		c = int(input('Digite o valor da '+ str(texto) ': ' ))
+	return c
+
 def entrada_do_usuario():      # Esta função representa a entrada do usuário.
-	return [0, 0]
+
+	i = int(input('Digite o valor da linha: '))
+	i = coordenada_esta_no_limite(i, 'linha')
+		
+
+	j = int(input('Digite o valor da coluna: '))
+	j =	coordenada_esta_no_limite(j, 'coluna')
+
+	return [i, j]
 
 def fazer_jogada(posicao):     # Esta função representa a jogada do usuário.
 	return None
