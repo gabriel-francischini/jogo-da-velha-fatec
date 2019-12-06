@@ -50,13 +50,26 @@ def mostrar_gui(tabuleiro):
 	print('+'.join(['---', '---', '---']))
 	print(' ' + ' | '.join(tabuleiro[6:9]))
 
-def checar_se_ganhou():        # Esta função analisa a condição de vitória do jogo atual.
-	return True
+def detectar_resultado (tabuleiro):
+	#Linhas Verticais
+	for marcador in range(0,1,2):
+		if tabuleiro[marcador] == tabuleiro[marcador+3]==tabuleiro[marcador+6]:
+			return True
+	#Linhas Horizontais
+	for horizontal in range(0,9,3):
+		if tabuleiro[horizontal] == tabuleiro[horizontal+1]==tabuleiro[horizontal+2]:
+			return True
+	#Linhas Diagonais
+	if tabuleiro[0] == tabuleiro[4] == tabuleiro[8]:
+		return True
+	if tabuleiro[2] == tabuleiro[4] == tabuleiro[6]:
+		return True
+	return False
 
 # Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
 fim_de_jogo = False
 while fim_de_jogo != True:
 	jogada = entrada_do_usuario()
 	fazer_jogada(jogada, tabuleiro)
-	fim_de_jogo = checar_se_ganhou()
+	fim_de_jogo = detectar_resultado (tabuleiro)
 	mostrar_gui(tabuleiro)
