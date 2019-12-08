@@ -1,5 +1,7 @@
-tabuleiro = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
-
+tabuleiro = [' ',  ' ',  ' ',
+             ' ',  ' ',  ' ',
+             ' ',  ' ',  ' '
+            ]
 
 def coordenada_esta_no_limite(c, texto):
 	while (c < 0) or (c > 2):
