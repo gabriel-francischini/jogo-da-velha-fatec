@@ -43,11 +43,16 @@ def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do
 
 	return tabuleiro	
 
-def mostrar_gui(tabuleiro):
+def mostrar_gui(tabuleiro):      # Essa função mostra o tabuleiro para o usuário realizar as jogadas
+
 	print(' ' + ' | '.join(tabuleiro[0:3]))
+
 	print('+'.join(['---', '---', '---']))
+
 	print(' ' + ' | '.join(tabuleiro[3:6]))
+
 	print('+'.join(['---', '---', '---']))
+
 	print(' ' + ' | '.join(tabuleiro[6:9]))
 
 def detectar_resultado (tabuleiro):
