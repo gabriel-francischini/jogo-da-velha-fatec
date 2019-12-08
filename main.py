@@ -41,7 +41,7 @@ def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do
 		posicao = 8
 	tabuleiro[posicao] = "X"
 
-	return posicao	
+	return tabuleiro	
 
 def mostrar_gui(tabuleiro):
 	print(' ' + ' | '.join(tabuleiro[0:3]))
@@ -70,6 +70,6 @@ def detectar_resultado (tabuleiro):
 fim_de_jogo = False
 while fim_de_jogo != True:
 	jogada = entrada_do_usuario()
-	fazer_jogada(jogada, tabuleiro)
+	tabuleiro = fazer_jogada(jogada, tabuleiro)
 	fim_de_jogo = detectar_resultado (tabuleiro)
 	mostrar_gui(tabuleiro)
