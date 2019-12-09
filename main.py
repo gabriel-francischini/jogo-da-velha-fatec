@@ -1,7 +1,7 @@
-tabuleiro = [' ',' ',' ',' ',' ',' ',' ',' ',' ']
-
-#sei laaaaaaaaaaaaaaaaaa
-# Eh pegadinha garai kkkj
+tabuleiro = [' ',  ' ',  ' ',
+             ' ',  ' ',  ' ',
+             ' ',  ' ',  ' '
+            ]
 
 def coordenada_esta_no_limite(c, texto):
 	while (c < 0) or (c > 2):
@@ -41,35 +41,50 @@ def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do
 		posicao = 8
 	tabuleiro[posicao] = "X"
 
-	return posicao	
+	return tabuleiro	
 
-def mostrar_gui(tabuleiro):
+def mostrar_gui(tabuleiro):      # Essa função mostra o tabuleiro para o usuário realizar as jogadas
+
 	print(' ' + ' | '.join(tabuleiro[0:3]))
+
 	print('+'.join(['---', '---', '---']))
+
 	print(' ' + ' | '.join(tabuleiro[3:6]))
+
 	print('+'.join(['---', '---', '---']))
+
 	print(' ' + ' | '.join(tabuleiro[6:9]))
 
-def detectar_resultado (tabuleiro):
+
+def detectar_resultado (tabuleiro):   # Essa função representa a detecção responsável por determinar o resultado da partida.
+	
 	#Linhas Verticais
-	for marcador in range(0,1,2):
+	for marcador in range(0,3,1):
 		if tabuleiro[marcador] == tabuleiro[marcador+3]==tabuleiro[marcador+6]:
-			return True
+			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
+				return tabuleiro[marcador]
+
 	#Linhas Horizontais
 	for horizontal in range(0,9,3):
 		if tabuleiro[horizontal] == tabuleiro[horizontal+1]==tabuleiro[horizontal+2]:
-			return True
+			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
+				return tabuleiro[marcador]
+
 	#Linhas Diagonais
 	if tabuleiro[0] == tabuleiro[4] == tabuleiro[8]:
-		return True
+		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
+			return tabuleiro[marcador]
+
 	if tabuleiro[2] == tabuleiro[4] == tabuleiro[6]:
-		return True
+		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
+			return tabuleiro[marcador]
 	return False
 
 # Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
 fim_de_jogo = False
-while fim_de_jogo != True:
+while fim_de_jogo == False:
 	jogada = entrada_do_usuario()
-	fazer_jogada(jogada, tabuleiro)
+	tabuleiro = fazer_jogada(jogada, tabuleiro)
 	fim_de_jogo = detectar_resultado (tabuleiro)
 	mostrar_gui(tabuleiro)
+print("Jogador " + fim_de_jogo + " ganhou.")
