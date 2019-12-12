@@ -67,17 +67,17 @@ def detectar_resultado (tabuleiro):   # Essa função representa a detecção re
 	#Linhas Horizontais
 	for horizontal in range(0,9,3):
 		if tabuleiro[horizontal] == tabuleiro[horizontal+1]==tabuleiro[horizontal+2]:
-			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-				return tabuleiro[marcador]
+			if tabuleiro[horizontal] == 'X' or tabuleiro[horizontal] == 'O':
+				return tabuleiro[horizontal]
 
 	#Linhas Diagonais
 	if tabuleiro[0] == tabuleiro[4] == tabuleiro[8]:
-		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-			return tabuleiro[marcador]
+		if tabuleiro[0] == 'X' or tabuleiro[0] == 'O':
+			return tabuleiro[0]
 
 	if tabuleiro[2] == tabuleiro[4] == tabuleiro[6]:
-		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-			return tabuleiro[marcador]
+		if tabuleiro[2] == 'X' or tabuleiro[2] == 'O':
+			return tabuleiro[2]
 	return False
 
 # Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
