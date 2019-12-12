@@ -1,3 +1,6 @@
+from detect import detectar_resultado
+
+
 tabuleiro = [' ',  ' ',  ' ',
              ' ',  ' ',  ' ',
              ' ',  ' ',  ' '
@@ -56,30 +59,7 @@ def mostrar_gui(tabuleiro):      # Essa função mostra o tabuleiro para o usuá
 	print(' ' + ' | '.join(tabuleiro[6:9]))
 
 
-def detectar_resultado (tabuleiro):   # Essa função representa a detecção responsável por determinar o resultado da partida.
-	
-	#Linhas Verticais
-	for marcador in range(0,3,1):
-		if tabuleiro[marcador] == tabuleiro[marcador+3]==tabuleiro[marcador+6]:
-			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-				return tabuleiro[marcador]
-
-	#Linhas Horizontais
-	for horizontal in range(0,9,3):
-		if tabuleiro[horizontal] == tabuleiro[horizontal+1]==tabuleiro[horizontal+2]:
-			if tabuleiro[horizontal] == 'X' or tabuleiro[horizontal] == 'O':
-				return tabuleiro[horizontal]
-
-	#Linhas Diagonais
-	if tabuleiro[0] == tabuleiro[4] == tabuleiro[8]:
-		if tabuleiro[0] == 'X' or tabuleiro[0] == 'O':
-			return tabuleiro[0]
-
-	if tabuleiro[2] == tabuleiro[4] == tabuleiro[6]:
-		if tabuleiro[2] == 'X' or tabuleiro[2] == 'O':
-			return tabuleiro[2]
-	return False
-
+	print("="*12)
 # Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
 fim_de_jogo = False
 while fim_de_jogo == False:
