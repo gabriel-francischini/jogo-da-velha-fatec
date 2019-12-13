@@ -1,7 +1,14 @@
+import ai
+from detect import detectar_resultado
+
+
 tabuleiro = [' ',  ' ',  ' ',
              ' ',  ' ',  ' ',
              ' ',  ' ',  ' '
             ]
+
+class JogadaInvalida(RuntimeError):
+	pass
 
 def coordenada_esta_no_limite(c, texto):
 	while (c < 0) or (c > 2):
@@ -19,7 +26,7 @@ def entrada_do_usuario():      # Esta função representa a entrada do usuário.
 
 	return [i, j]
 
-def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do usuário.
+def humano_jogar(posicao, tabuleiro, simbolo):     # Esta função representa a jogada do usuário.
 	
 	if posicao == [0,0]:
 		posicao = 0
@@ -39,7 +46,11 @@ def fazer_jogada(posicao, tabuleiro):     # Esta função representa a jogada do
 		posicao = 7
 	if posicao == [2,2]:
 		posicao = 8
-	tabuleiro[posicao] = "X"
+	if tabuleiro[posicao] != " " :
+		raise JogadaInvalida("Jogada já feita.") #trata objeto como exceção
+												 #("Jogada já feita") é o objeto da classe JogadaInvalida	
+	tabuleiro[posicao] = simbolo
+
 
 	return tabuleiro	
 
@@ -56,35 +67,27 @@ def mostrar_gui(tabuleiro):      # Essa função mostra o tabuleiro para o usuá
 	print(' ' + ' | '.join(tabuleiro[6:9]))
 
 
-def detectar_resultado (tabuleiro):   # Essa função representa a detecção responsável por determinar o resultado da partida.
-	
-	#Linhas Verticais
-	for marcador in range(0,3,1):
-		if tabuleiro[marcador] == tabuleiro[marcador+3]==tabuleiro[marcador+6]:
-			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-				return tabuleiro[marcador]
-
-	#Linhas Horizontais
-	for horizontal in range(0,9,3):
-		if tabuleiro[horizontal] == tabuleiro[horizontal+1]==tabuleiro[horizontal+2]:
-			if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-				return tabuleiro[marcador]
-
-	#Linhas Diagonais
-	if tabuleiro[0] == tabuleiro[4] == tabuleiro[8]:
-		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-			return tabuleiro[marcador]
-
-	if tabuleiro[2] == tabuleiro[4] == tabuleiro[6]:
-		if tabuleiro[marcador] == 'X' or tabuleiro[marcador] == 'O':
-			return tabuleiro[marcador]
-	return False
-
+	print("="*12)
 # Esta etapa determina as jogadas que serão feitas ao longo do jogo atual.
 fim_de_jogo = False
+
+simbolo = "X"
 while fim_de_jogo == False:
-	jogada = entrada_do_usuario()
-	tabuleiro = fazer_jogada(jogada, tabuleiro)
-	fim_de_jogo = detectar_resultado (tabuleiro)
-	mostrar_gui(tabuleiro)
+
+	try :
+		if simbolo == "X" :
+			jogada = entrada_do_usuario()
+			tabuleiro = humano_jogar(jogada, tabuleiro, simbolo)
+		else:
+			tabuleiro = ai.fazer_jogada(tabuleiro, simbolo) 
+		fim_de_jogo = detectar_resultado (tabuleiro)
+		mostrar_gui(tabuleiro)
+		if simbolo == "X" :
+			simbolo = "O"
+		else: 
+			simbolo = "X"
+	except JogadaInvalida as e:
+		print(str(e))
+
+
 print("Jogador " + fim_de_jogo + " ganhou.")
